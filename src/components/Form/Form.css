@@ -1,0 +1,33 @@
+.form{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskText{
+    height: 40px;
+    border: 1px solid #CFCFCF;
+    min-width: 80%;
+    margin: 0 10px;
+    padding: 10px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+    color: #41444B;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.taskText:focus{
+    border: 1px solid #AAAAAA;
+}
+
+.btn{
+    height: 40px;
+    width: 40px;
+    background-color: #BDD2B6;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #AAAAAA;
+}
