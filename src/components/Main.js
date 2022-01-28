@@ -7,16 +7,26 @@ class Main extends Component{
     // class fields
     state = {
         newTask: '',
-        tasks: [
-            'Fazer café',
-            'Beber água',
-            'Deitar'
-        ],
+        tasks: [],
     };
 
     handleInputChange = (e) =>{
         this.setState({
             newTask: e.target.value,
+        });
+    }
+
+    handleSubmit = (e) =>{
+        e.preventDefault();
+        const {tasks} = this.state;
+        let {newTask} = this.state;
+        newTask = newTask.trim();
+
+        if(tasks.indexOf(newTask) != -1) return;
+
+        const newTasks = [...tasks];
+        this.setState({
+            tasks: [...newTasks, newTask],
         });
     }
 
@@ -26,7 +36,7 @@ class Main extends Component{
             <div className='main'>
                 <div className='title'>Lista de Tarefas</div>
                 
-                <form action='#' className='form'>
+                <form onSubmit={this.handleSubmit} action='#' className='form'>
                     <input onChange={this.handleInputChange} type='text' className='taskText' value={newTask} placeholder='Cadastrar Nova Tarefa'></input>
                     <button type='submit' className='btn'>
                         <FaPlus />
@@ -37,10 +47,10 @@ class Main extends Component{
                     {tasks.map((task) => (
                         <li key={task}>
                             {task}
-                            <div>
+                            <span>
                                 <FaEdit className='edit' />
                                 <FaWindowClose className='delete' />
-                            </div>
+                            </span>
                         </li>
                     ))}
                 </ul>

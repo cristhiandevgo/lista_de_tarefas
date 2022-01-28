@@ -77,3 +77,8 @@
     color: #E5707E;
     cursor: pointer;
 }
+
+.tasks li span{
+    display: flex;
+    align-items: center;
+}
