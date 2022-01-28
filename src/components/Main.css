@@ -23,7 +23,7 @@
     justify-content: center;
 }
 
-.task{
+.taskText{
     height: 40px;
     border: 1px solid #CFCFCF;
     min-width: 80%;
@@ -35,8 +35,8 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.task:focus{
-    border: 1px solid #AAA;
+.taskText:focus{
+    border: 1px solid #AAAAAA;
 }
 
 .btn{
@@ -47,4 +47,33 @@
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 5px #AAAAAA;
+}
+
+.tasks{
+    margin-top: 30px;
+}
+
+.tasks li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    transition: 700ms;
+}
+
+.tasks li:hover{
+    background-color: #CFCFCF;
+    cursor: pointer;
+}
+
+.tasks li .edit{
+    margin-right: 10px;
+    color: #1572A1;
+    cursor: pointer;
+}
+
+.tasks li .delete{
+    margin-right: 10px;
+    color: #E5707E;
+    cursor: pointer;
 }
