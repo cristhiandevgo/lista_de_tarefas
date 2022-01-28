@@ -22,13 +22,27 @@ class Main extends Component{
         let {newTask} = this.state;
         newTask = newTask.trim();
 
-        if(tasks.indexOf(newTask) != -1) return;
+        if(tasks.indexOf(newTask) !== -1) return;
 
         const newTasks = [...tasks];
         this.setState({
             tasks: [...newTasks, newTask],
         });
     }
+
+    handleEdit = (e, index) => {
+        console.log(index);
+    }
+
+    handleDelete = (e, index) => {
+        const {tasks} = this.state;
+        const newTasks = [...tasks];
+        newTasks.splice(index, 1);
+
+        this.setState({
+            tasks: [...newTasks],
+        });
+    } 
 
     render(){
         const {newTask, tasks} = this.state;
@@ -44,12 +58,12 @@ class Main extends Component{
                 </form>
 
                 <ul className='tasks'>
-                    {tasks.map((task) => (
+                    {tasks.map((task, index) => (
                         <li key={task}>
                             {task}
                             <span>
-                                <FaEdit className='edit' />
-                                <FaWindowClose className='delete' />
+                                <FaEdit onClick={(e) => this.handleEdit(e, index)} className='edit' />
+                                <FaWindowClose onClick={(e) => this.handleDelete(e, index)} className='delete' />
                             </span>
                         </li>
                     ))}
