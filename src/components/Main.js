@@ -8,6 +8,7 @@ class Main extends Component{
     state = {
         newTask: '',
         tasks: [],
+        index: -1,
     };
 
     handleInputChange = (e) =>{
@@ -18,20 +19,37 @@ class Main extends Component{
 
     handleSubmit = (e) =>{
         e.preventDefault();
-        const {tasks} = this.state;
+        const {tasks, index} = this.state;
         let {newTask} = this.state;
         newTask = newTask.trim();
 
         if(tasks.indexOf(newTask) !== -1) return;
 
         const newTasks = [...tasks];
-        this.setState({
-            tasks: [...newTasks, newTask],
-        });
+
+        if(index === -1){
+            this.setState({
+                tasks: [...newTasks, newTask],
+                newTask: '',
+            });
+        }else{
+            newTasks[index] = newTask;
+
+            this.setState({
+                tasks: [...newTasks],
+                index: -1,
+            });
+        }
+
+        
     }
 
     handleEdit = (e, index) => {
-        console.log(index);
+        const {tasks} = this.state;
+        this.setState({
+            index,
+            newTask: tasks[index],
+        });
     }
 
     handleDelete = (e, index) => {
